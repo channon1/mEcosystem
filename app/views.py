@@ -1,8 +1,8 @@
 from app import app
 #from pylons import request, response, session, tmpl_context, config
 
-import socket
-import time
+#import socket
+#import time
 
 @app.route('/')
 @app.route('/index')
