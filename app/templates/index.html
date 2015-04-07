@@ -21,22 +21,22 @@
 <body>
   <div class="container">
     <div class="jumbotron">
-      <h1>Smart Measuring Cup</h1>
+      <h1>Welcome to your personal ecosystem</h1>
   </div>
     <div class="row" id="status">
       <div class="col-md-12">
-	<h3>Connecting...</h3>
+	<h3>Connecting...(plants take time to grow and code takes time to run)</h3>
       </div>
     </div>
     <div class="row" id="main">
       <div class="col-md-2">
-	<label>Volume:</label>
+	<label>data:</label>
 	<h3>
-	  <span id="data">0</span> <span id="symbol">ml</span>
+	  <span id="data">0</span> <span id="symbol">datums</span>
 	</h3>
       </div>
       <div class="col-md-2">
-	<label for="units">Units:</label>
+	<label for="pulldown1">Units:</label>
 	<select class="form-control" id="units">
 	</select>
       </div>
@@ -59,8 +59,8 @@
   
   <script>
     $(document).ready(function() {
-    function updateData(data) {
-    $('#data').text(value);
+    function updateData(datas) {
+    $('#data').text(datas);
     }
     
     function setStatus(status) {
