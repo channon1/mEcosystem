@@ -60,7 +60,7 @@
   <script>
     $(document).ready(function() {
     function updateData(datas) {
-    $('#data').text("FUCK");
+    $('#data').text(69);
     }
     
     function setStatus(status) {
@@ -80,7 +80,7 @@
     
     var server = new EventSource('/data');
     server.onmessage = function(e) {
-    updataData(e.data);
+      updataData(e.data);
     };
     server.onopen = function(e) {
     // Hide connecting status and show controls.
