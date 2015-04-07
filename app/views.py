@@ -6,9 +6,8 @@ def index():
     return "mEcosystem! ;)"
 
 @app.route('/data')
-
-    def data():
-        return Response(yunserver_sse(), mimetype='text/event-stream')
+def data():
+    return Response(yunserver_sse(), mimetype='text/event-stream')
 
 
 def yunserver_sse():
