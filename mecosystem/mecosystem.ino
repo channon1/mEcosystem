@@ -1,7 +1,25 @@
-// MIT License
-//Hannon
-// channon@hawk.iit.edu
-//support@mecosystemlabs.com
+#include <Bridge.h>
+#include <Console.h>
+#include <FileIO.h>
+#include <HttpClient.h>
+#include <Mailbox.h>
+#include <Process.h>
+#include <YunClient.h>
+#include <YunServer.h>
+
+/* MIT License
+ *Hannon
+ * channon@hawk.iit.edu
+ *support@mecosystemlabs.com
+ *
+ *
+ *
+ */
+
+#define YUN_SERVER_PORT 1993
+
+
+
 /* Data Pins*/
 #define lightT 3
 #define lightB  4
@@ -11,6 +29,8 @@
 #define other 8
 #define temp 9
 #define ph A0
+
+//global variables
 //data variables
 //min on
 int lightTmin = 0;
@@ -27,13 +47,22 @@ int lightFdhr = 10;
 int lightTdmin = 0;
 int lightBdmin = 0;
 int lightFdmin = 0;
+//pump
 int pumpFreq = 90; //min
 int pumpD = 210; // sec
+//temp
 int setTemp = 78;
+//time
 int s = 55;
 int m = 25;
 int h = 10;
+//flag
 int sched = 0;
+
+//server stuff
+YunServer server(YUN_SERVER_PORT);
+YunClient client;
+
 void setup() {
   // put your setup code here, to run once:
   pinMode(3, OUTPUT);
@@ -44,7 +73,7 @@ void setup() {
   pinMode(8, OUTPUT);
   pinMode(9, INPUT);
   pinMode(A0, INPUT);
-  Serial.begin(9600);
+  Serial.begin(115200);
   // initialize timer1
   noInterrupts();           // disable all interrupts
   TCCR1A = 0;
@@ -55,9 +84,16 @@ void setup() {
   TCCR1B |= (1 << CS12);    // 256 prescaler
   TIMSK1 |= (1 << OCIE1A);  // enable timer compare interrupt
   interrupts();             // enable all interrupts
+
+//setup bridge
+  Bridge.begin();
+  server.listenOnLocalhost();
+  server.begin();
+
 }
-ISR(TIMER1_COMPA_vect)          // timer compare interrupt service routine
-{
+
+
+ISR(TIMER1_COMPA_vect) {          // timer compare interrupt service routine
   s++;
   if (s == 60) {
     //mina ++
@@ -131,6 +167,26 @@ void loop() {
     }
   }
   delay(500);
+  
+  if(client.connected()) {
+     //handle client
+     String data = (String(lightTmin)+','+String(lightBmin)+','+String(lightFmin)+','+
+             String(lightThr)+','+String(lightBhr)+','+String(lightFhr)+','+
+             String(lightTdhr)+','+String(lightBdhr)+','+String(lightFdhr)+','+
+             String(lightTdmin)+','+String(lightBdmin)+','+String(lightFdmin)+','+
+             String(pumpFreq)+','+String(pumpD)+','+
+             String(setTemp)+','+
+             String(s)+','+String(m)+','+String(h)             
+             );
+     client.println(data);
+  }
+  else {
+     client = server.accept();
+      if (client.connected()) {
+         Serial.println("User is connected!");
+      } 
+  }
+  
   Serial.print(h);
   Serial.print(":");
   Serial.print(m);
