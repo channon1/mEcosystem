@@ -1,6 +1,6 @@
 import sys
 sys.path.append('/mnt/sda1/python-packages')
-from pylons import request, response, session, tmpl_context, config 
+from pylon import request, response, session, tmpl_context, config 
 
 import time
 import socket
