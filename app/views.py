@@ -1,6 +1,6 @@
 from app import app
 #from pylons import request, response, session, tmpl_context, config
-from flask import *
+#from flask import *
 
 import socket
 import time
