@@ -1,5 +1,5 @@
 from app import app
-from pylons import request, response, session, tmpl_context, config
+#from pylons import request, response, session, tmpl_context, config
 
 import socket
 import time
