@@ -60,7 +60,7 @@
   <script>
     $(document).ready(function() {
     function updateData(datas) {
-    $('#data').text(datas.toPrecision(5));
+    $('#data').text(number(datas).toPrecision(5));
     }
     
     function setStatus(status) {
