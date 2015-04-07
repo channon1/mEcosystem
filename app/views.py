@@ -1,13 +1,14 @@
 from app import app
 #from pylons import request, response, session, tmpl_context, config
+from flask import *
 
-#import socket
-#import time
+import socket
+import time
 
 @app.route('/')
 @app.route('/index')
 def index():
-    return "mEcosystem! ;)"
+    return render_template('index.html')
 
 @app.route('/data')
 def data():
