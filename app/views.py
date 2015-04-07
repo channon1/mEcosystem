@@ -1,7 +1,7 @@
 from app import app
 #from pylons import request, response, session, tmpl_context, config
 #from flask import *
-
+from flask import render_template,  Response
 import socket
 import time
 
