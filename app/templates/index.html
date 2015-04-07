@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<head>
+  <p>
+'HI MECOSYSTEM' ;)
+  </p>
+  <p>
+    'bonjour le monde'
+  </p>
+  <p>
+    <h3>
+      <span id="data"</span>
+    </h3>
+    <script>
+      $(document).ready(function() {
+        function updateData(data) {
+          $('#data').text();
+        }
+      
+      }
+      
+      var server = new EventSource('/data');
+      server.onmessage = function(e) {
+      updataData(e.data);
+      };
+      });
+    </script>
+  </p>
+  
+
+</head>
