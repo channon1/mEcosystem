@@ -21,7 +21,7 @@
 <body>
   <div class="container">
     <div class="jumbotron">
-      <h1>Welcome to your personal mEcosystem</h1>
+      <h1>Welcome to mEcosystem, Your own personal ecosystem</h1>
   </div>
     <div class="row" id="status">
       <div class="col-md-12">
@@ -32,11 +32,11 @@
       <div class="col-md-2">
 	<label>data:</label>
 	<h3>
-	  <span id="dataf"></span> <span id="symbol">datums</span>
+	  <span id="dataf"empty></span> <span id="symbol">datums</span>
 	</h3>
       </div>
       <div class="col-md-2">
-	<label for="pulldown1">FUCK THIS:</label>
+	<label for="pulldown1">F THIS:</label>
 	<select class="form-control" id="units">
 	</select>
       </div>
@@ -60,7 +60,7 @@
   <script>
     $(document).ready(function() {
     function updateData(datas) {
-        $('#dataf').text("datas");
+        $('#dataf').text(datas);
     }
     
     function setStatus(status) {
@@ -80,7 +80,7 @@
     
     var server = new EventSource('/data');
     server.onmessage = function(e) {
-      updataData(e.data);
+        updataData(e.data);
     };
     server.onopen = function(e) {
     // Hide connecting status and show controls.
