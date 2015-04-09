@@ -137,7 +137,7 @@
       updateMeasurement(lastMeasure);
       });
       // Create server sent event connection.
-      var server = new EventSource('/measurements');
+      var server = new EventSource('/data');
       server.onmessage = function(e) {
       // Update measurement value.
       updateMeasurement(e.data);
