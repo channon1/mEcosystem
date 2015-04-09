@@ -23,7 +23,7 @@ def yunserver_sse():
                 line = socfile.readline()
                 if not line:
                    raise StopIteration
-                yield 'data: {0}\n\n'.format(line)
+                yield (line + '\n')
                 time.sleep(0)
     except socket.error:
             raise StopIteration
