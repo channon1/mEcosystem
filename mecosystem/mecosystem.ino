@@ -16,7 +16,7 @@
  *
  */
 
-#define YUN_SERVER_PORT 1993
+#define YUN_SERVER_PORT 5678
 
 
 /* Data Pins*/
@@ -177,7 +177,7 @@ void loop() {
              String(setTemp)+','+
              String(s)+','+String(m)+','+String(h)             
              );
-     client.println(data,20);
+     client.println(58.123456,5);
      Serial.println(data);
   }
   else {
