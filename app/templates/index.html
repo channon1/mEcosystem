@@ -32,7 +32,7 @@
       <div class="col-md-2">
 	<label>data:</label>
 	<h3>
-	  <span id="dataf"empty></span> <span id="symbol">datums</span>
+	  <span id="dataf">0</span> <span id="symbol">datums</span>
 	</h3>
       </div>
       <div class="col-md-2">
@@ -58,11 +58,11 @@
   <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
   
   <script>
-    $(document).ready(function() {
-    function updateData(datas) {
-        document.getElementById("result").innerHTML += e
-        $('#dataf').text(datas);
-    }
+  $(document).ready(function() {
+  function updateData(datas) {
+      
+      $('#dataf').text("datas");
+  }
     
     function setStatus(status) {
     if (status) {
