@@ -19,7 +19,6 @@
 #define YUN_SERVER_PORT 1993
 
 
-
 /* Data Pins*/
 #define lightT 3
 #define lightB  4
@@ -178,7 +177,8 @@ void loop() {
              String(setTemp)+','+
              String(s)+','+String(m)+','+String(h)             
              );
-     client.println(data);
+     client.println(data,20);
+     Serial.println(data);
   }
   else {
      client = server.accept();
